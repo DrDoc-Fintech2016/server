@@ -1,0 +1,31 @@
+{
+  "name": "drdoc-server",
+  "version": "1.0.0",
+  "description": "DrDoc server modules\\",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "gm": "^1.23.0",
+    "jimp": "^0.2.27",
+    "json-stringify-safe": "^5.0.1",
+    "node-cloud-vision-api": "^0.2.0",
+    "tinyurl": "^1.1.2",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrDoc-Fintech2016/server.git"
+  },
+  "author": "Eran Shlomo, Chen Zarfati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrDoc-Fintech2016/server/issues"
+  },
+  "homepage": "https://github.com/DrDoc-Fintech2016/server#readme"
+}
