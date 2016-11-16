@@ -1,0 +1,15 @@
+{
+  {"CheckID":<check_id>},
+  {"Date":<date>},
+  {"Payment":<payment>},
+  {"Gross Earnings":<gross_earnings>},
+  {"Federal Income Tax":<federal_income_tax>},
+  {"State Income Tax":<state_income_tax>},
+  {"Social Security Tax":<social_security_tax>},
+  {"Medicare Tax":<medicare_tax>},
+  {"Insurence":<insurance>},
+  {"Retirement Saving Plan":<retierment_savings_plan>},
+  {"Charity":<charity>},
+  {"Child Care Plan":<child_care_plan>},
+  {"Net Pay":<net_pay>},
+}
