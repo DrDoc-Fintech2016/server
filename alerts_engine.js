@@ -14,7 +14,6 @@ function AccountHandler(user, creds){
     var get_user_account = function (){
     //    TODO retrieval of account details (i.e balance
     };
-
 };
 
 function RuleHandler(account_handler){
@@ -36,6 +35,9 @@ function RuleHandler(account_handler){
     var push_alert = function(){
 
     };
+    var run_checks = function(){
+    //    TODO run all checks, push alerts if necessary
+    }
 };
 
 function DbHandler(){
@@ -47,7 +49,11 @@ function DbHandler(){
     var update_user_paycheck = function (){
     //    TODO update our DB with user paycheck
     };
-}
+};
 
-
+var process_paycheck=function(paycheck_model)
+{
+    console.log("Processing:"+JSON.stringify(paycheck_model));
+};
+module.exports.process_paycheck = process_paycheck;
 
