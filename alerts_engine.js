@@ -37,6 +37,7 @@ function RuleHandler(account_handler){
     };
     var run_checks = function(){
     //    TODO run all checks, push alerts if necessary
+    //    if (!check_balance())
     }
 };
 
@@ -51,9 +52,19 @@ function DbHandler(){
     };
 };
 
+function report_alert(alert)
+{
+    if (typeof(alert_callback)=="function")
+        alert_callback(alert);
+}
 var process_paycheck=function(paycheck_model)
 {
     console.log("Processing:"+JSON.stringify(paycheck_model));
+    report_alert("dummy alert!!!");
+
 };
+var alert_callback=null;
 module.exports.process_paycheck = process_paycheck;
+module.exports.on_alert=alert_callback;
+
 
