@@ -2,8 +2,8 @@
  * Created by czarfati on 11/16/2016.
  */
 var apiai = require('apiai');
-var hardcoded_client_access_token = 'c421d45054224c8180fe4c4d9f42335e';
-var hardcoded_dev_access_token = '479321d10339462da4eb43cced9ad629';
+var hardcoded_client_access_token = 'b4356a5564ff459b856f1554ccf0da2f';
+var hardcoded_dev_access_token = '8216d67a7be64541ae931d15e758a262';
 
 
 function ApiAiHandler(access_token) {
@@ -43,5 +43,3 @@ function DialogManager(){
     };
 }
 
-var ai_handler = new ApiAiHandler(hardcoded_client_access_token);
-ai_handler.send_query("what was my salary this month");
