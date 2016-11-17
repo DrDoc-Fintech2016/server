@@ -1,5 +1,6 @@
 var fs = require('fs');
-var analyze_image = function(path) {
+var analyze_image = function(path,result_callback) {
+	console.log("processing: "+path);
   //return "Checking "+path;
   var key="AIzaSyBY-JuW4suG6pnW7rBBaM4Tfk34FOHUCpg";
   const vision = require('node-cloud-vision-api')
@@ -19,7 +20,9 @@ var analyze_image = function(path) {
 	// send single request
 	vision.annotate(req).then((res) => {
 	  // handling response
-	  console.log(JSON.stringify(res.responses));
+	  //console.log(JSON.stringify(res.responses));
+	  if (typeof(result_callback=="function"))
+		result_callback(res.responses);
 	  fs.writeFile("dump.json", JSON.stringify(res.responses), function(err) {
 			if(err) {
 				return console.log(err);

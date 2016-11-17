@@ -21,6 +21,14 @@ var bodyParser = require('body-parser');
 http_app.use(bodyParser.json()); // support json encoded bodies
 http_app.use(bodyParser.urlencoded({limit: '50mb', extended: true })); // support encoded bodies
 vision=require("./vision.js");
+user_model=require("./model.js");
+dialog=require("./dialog.js");
+alerts_engine=require("./alerts_engine.js");
+
+alerts_engine.on_alert=function(alert)
+{
+	send("receive","bye");
+};
 
 http_app.get('/', function (req, res) {
    res.send('Hello World');
@@ -58,6 +66,14 @@ http_app.post('/api/capture', function(req, res) {
 	Jimp.read(org_path, function (err, rotated) {
 		if (err) throw err;
 		rotated.rotate(rotation).write(img_path); // save
+		vision.analyze_image(img_path,function(ocr_result){
+			send("ocr_raw",ocr_result);
+			console.log("converting ocr to model");
+			user_model.process_text_blob(ocr_result);
+			console.log("running alert engine on update model");
+			alerts_engine.process_paycheck(user_model.get_model());
+			
+		});
 		Jimp.read(img_path, function (err, thumb) {
 			if (err) throw err;
 			thumb.resize(100, 100).write(thumb_path); // save
@@ -116,6 +132,11 @@ wss.on('close', function() {
 function handle_message(cmd,data)
 {
 	console.log("command:"+cmd+",data:"+data);
+	if (cmd=="send")
+	{
+		if (data=="hi")
+			send("receive","bye");
+	}
 }
 
 wss.on('connection', function connection(ws) {
@@ -135,7 +156,7 @@ wss.on('connection', function connection(ws) {
 						//return; 
 					}
 					console.log ("Sending to:"+client+", message:"+message);  
-					client.send(message);
+					//client.send(message);
 			});
 			json=JSON.parse(message);
         	handle_message(json.cmd,json.data);
@@ -158,7 +179,9 @@ function send(cmd,data)
 {
 	wss.clients.forEach(function each(client) {
 		try {
-			client.send(JSON.stringify({cmd:cmd,data:data}));
+			var json=JSON.stringify({cmd:cmd,data:data});
+			console.log ("Sending to:"+client+", message:"+json);  
+			client.send(json);
 		}
 		catch(err){
 			return; 
