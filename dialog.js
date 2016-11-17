@@ -30,7 +30,6 @@ function ApiAiHandler(access_token) {
         });
         request.on('error', function (error) {
             console.log(error);
-            console.log("shiiiiiiiiiiit");
         });
         request.end();
     }

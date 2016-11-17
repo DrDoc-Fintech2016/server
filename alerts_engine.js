@@ -35,7 +35,7 @@ function report_alert(alert)
 }
 var process_paycheck=function(model)
 {
-    console.log("Processing:"+JSON.stringify(paycheck_model));
+    console.log("Processing:"+JSON.stringify(model));
     print_debug("process_paycheck() " + "calling alert engine");
     alert_engine = new RuleHandler(model);
     alert_engine.run_checks(model);
