@@ -3,6 +3,7 @@
  */
 
 function AccountHandler(user, creds){
+    var dev_key = "934277168b7c4aeaa4f7237b3de786f4";
     this.user_id = user;
     this.user_creds = creds;
     this.account_dict = new dict();
@@ -19,25 +20,23 @@ function AccountHandler(user, creds){
 function RuleHandler(account_handler){
     this.account_handler = account_handler;
 
-    var upload_paycheck = function(paycheck_model){
+    this.upload_paycheck = function(paycheck_model){
     //    TODO get paycheck model, upload to user data base and run checks
     };
 
-    var check_balance = function(){
+    this.check_balance = function(){
     //    TODO check balance information return OK/WRONG (for minus or low budget) and amount
     };
-    var check_tax_payment = function(){
+    this.check_tax_payment = function(){
     //    TODO check tax payments and return OK/WRONG and amount
     };
-    var check_salary_deposit = function(){
+    this.check_salary_deposit = function(){
     //    TODO compare salary and real deposit and return OK/WRONG and amount
     };
-    var push_alert = function(){
-
-    };
-    var run_checks = function(){
+    this.run_checks = function(){
     //    TODO run all checks, push alerts if necessary
-    //    if (!check_balance())
+        if (!this.check_balance()) report_alert("Your balance is negative");
+        if (!this.check_salary_deposit()) report_alert("Your salary deposit is not as expected");
     }
 };
 
