@@ -6,20 +6,19 @@ var print_debug = function(str){console.log("[DEBUG]:" + str );}
 
 function RuleHandler(){
     print_debug("RuleHandler() creating DummyAccountHandler");
-    this.account_handler = new DummyAccountHandler();
-
-    this.upload_paycheck = function(paycheck_model){
-    //    TODO get paycheck model, upload to user data base and run checks
-    };
 
     this.check_balance = function(){
     //    TODO check balance information return OK/WRONG (for minus or low budget) and amount
+        return true;
+
     };
     this.check_tax_payment = function(){
     //    TODO check tax payments and return OK/WRONG and amount
+        return true;
     };
     this.check_salary_deposit = function(){
     //    TODO compare salary and real deposit and return OK/WRONG and amount
+
         return false;
     };
     this.run_checks = function(){
