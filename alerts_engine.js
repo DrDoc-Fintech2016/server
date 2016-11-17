@@ -4,8 +4,7 @@
 https = require('https');
 var print_debug = function(str){console.log("[DEBUG]:" + str );}
 
-function RuleHandler(){
-    print_debug("RuleHandler() creating DummyAccountHandler");
+function RuleHandler(model){
 
     this.check_balance = function(){
     //    TODO check balance information return OK/WRONG (for minus or low budget) and amount
